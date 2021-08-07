@@ -12,6 +12,7 @@ headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537
 
 #baseUrl : the website
 baseUrl="https://pubmed.ncbi.nlm.nih.gov/?term="
+#Compound list : please make sure it was stored in this directory
 data = xlrd.open_workbook('sourceFile/2 Compounds.xlsx')
 resultFileName="resultFile/Pubmed"
 table = data.sheet_by_index(0)
@@ -22,7 +23,7 @@ booksheet = workbook.add_sheet('Sheet 1', cell_overwrite_ok=True)
 
 timeStr=str(time.strftime('%m-%d %H-%M', time.localtime(time.time())))
 subtitles=["influenza","antiviral"]
-currentb=0#0: influenza，1: antiviral
+currentb=0 # 0: influenza，1: antiviral
 
 booksheet.write(0, 0, "No.")
 booksheet.write(0, 1, "Name")
