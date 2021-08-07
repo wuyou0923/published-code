@@ -16,7 +16,7 @@ baseUrl="https://pubmed.ncbi.nlm.nih.gov/?term="
 data = xlrd.open_workbook('sourceFile/2 Compounds.xlsx')
 resultFileName="resultFile/Pubmed"
 table = data.sheet_by_index(0)
-pert_id = table.col_values(0)
+compd_name = table.col_values(0)
 i = 1
 workbook = xlwt.Workbook(encoding='utf-8')
 booksheet = workbook.add_sheet('Sheet 1', cell_overwrite_ok=True)
@@ -34,18 +34,15 @@ a = 1
 
 while True:
     print("Working......................................................................................No."+str(i))
-    if(i>=len(pert_id)):
+    if(i>=len(compd_name)):
         break
     # resp: returned result
     try:
         # a += 1
-        currentName=pert_id[i]+"+"+subtitles[currentb]
+        currentName=compd_name[i]+"+"+subtitles[currentb]
         print(str(currentName))
-        resp=requests.get(baseUrl+"("+pert_id[i]+"[Title/Abstract])+AND+("+subtitles[currentb]+"[Title/Abstract])",headers=headers)
+        resp=requests.get(baseUrl+"("+compd_name[i]+"[Title/Abstract])+AND+("+subtitles[currentb]+"[Title/Abstract])",headers=headers)
         resp.encoding='utf-8'  #Setting utf-8
-        #print(baseUrl+"("+pert_id[i]+"[Title/Abstract])+AND+("+subtitles[b]+"[Title/Abstract])")
-        #print(resp.text)
-        # html Create BeautifulSoup
         bs=BeautifulSoup(resp.text,"html.parser")
         booksheet.write(a, 0, i)
         booksheet.write(a, 1, currentName)
