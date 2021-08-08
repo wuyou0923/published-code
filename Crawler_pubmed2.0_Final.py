@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import time
-
 import requests
 import xlrd
 import xlwt
@@ -46,20 +45,9 @@ while True:
         bs=BeautifulSoup(resp.text,"html.parser")
         booksheet.write(a, 0, i)
         booksheet.write(a, 1, currentName)
-
-
         currenti = i
         i += 1
-
-        # try:
-        #     em = bs.find("em", class_="altered-search-explanation query-error-message").get_text()
-        #     print(em)
-        #     booksheet.write(a, 2, "No Result")
-        # except:
-        #     print("Normal")
         try:
-
-
             title = bs.find("h1", class_="heading-title").get_text().replace("\n", "").replace("\r", "").replace(
                 "                          ", "")
             print(str(currentName)+"the only one")
