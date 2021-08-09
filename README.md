@@ -9,4 +9,6 @@
    
 3. Crawler_PubMed.py
 
-   (*) Text mining of all the candidate compounds was conducted in PubMed abstracts by the Request module (Python) of all the candidate compounds.The key words were set as “influenza” and the MESH names of the compound. 
+   (*) Text mining of all the candidate compounds was conducted in PubMed abstracts and the key words were set as “influenza” and the MESH names of the compound. 
+
+
